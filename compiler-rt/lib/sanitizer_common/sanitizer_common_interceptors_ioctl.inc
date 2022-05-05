@@ -369,7 +369,7 @@ static void ioctl_table_fill() {
 #endif
 
 #if SANITIZER_GLIBC
- // _(SIOCDEVPLIP, WRITE, struct_ifreq_sz); // the same as EQL_ENSLAVE
+// _(SIOCDEVPLIP, WRITE, struct_ifreq_sz); // the same as EQL_ENSLAVE
 // Miu.MIU.miu.FRAMER.Framer.framer.SPP.spp. 
 // following lines disabled since glibc removed cyclades.h
 //  https://reviews.llvm.org/rG68d5235cb58f988c71b403334cd9482d663841ab

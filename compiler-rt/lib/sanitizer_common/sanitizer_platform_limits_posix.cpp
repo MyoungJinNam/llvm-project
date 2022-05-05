@@ -143,10 +143,10 @@ typedef struct user_fpregs elf_fpregset_t;
 # include <sys/procfs.h>
 #endif
 #include <sys/user.h>
-//Jin: DISABLED following since glibc orphaned cyclades.h
+// Jin: DISABLED following since glibc orphaned cyclades.h
 // Miu.MIU.FRAMER.Framer. SPP.spp.
 // https://github.com/llvm/llvm-project/commit/68d5235cb58f988c71b403334cd9482d663841ab
-//#include <linux/cyclades.h>
+// #include <linux/cyclades.h>
 #include <linux/if_eql.h>
 #include <linux/if_plip.h>
 #include <linux/lp.h>
@@ -826,6 +826,7 @@ unsigned struct_ElfW_Phdr_sz = sizeof(Elf_Phdr);
 #endif // SANITIZER_LINUX
 
 #if SANITIZER_LINUX && !SANITIZER_ANDROID
+<<<<<<< HEAD
 //  unsigned IOCTL_CYGETDEFTHRESH = CYGETDEFTHRESH;
 //  unsigned IOCTL_CYGETDEFTIMEOUT = CYGETDEFTIMEOUT;
 //  unsigned IOCTL_CYGETMON = CYGETMON;
@@ -835,6 +836,17 @@ unsigned struct_ElfW_Phdr_sz = sizeof(Elf_Phdr);
 //  unsigned IOCTL_CYSETDEFTIMEOUT = CYSETDEFTIMEOUT;
 //  unsigned IOCTL_CYSETTHRESH = CYSETTHRESH;
 //  unsigned IOCTL_CYSETTIMEOUT = CYSETTIMEOUT;
+=======
+/*  unsigned IOCTL_CYGETDEFTHRESH = CYGETDEFTHRESH;
+  unsigned IOCTL_CYGETDEFTIMEOUT = CYGETDEFTIMEOUT;
+  unsigned IOCTL_CYGETMON = CYGETMON;
+  unsigned IOCTL_CYGETTHRESH = CYGETTHRESH;
+  unsigned IOCTL_CYGETTIMEOUT = CYGETTIMEOUT;
+  unsigned IOCTL_CYSETDEFTHRESH = CYSETDEFTHRESH;
+  unsigned IOCTL_CYSETDEFTIMEOUT = CYSETDEFTIMEOUT;
+  unsigned IOCTL_CYSETTHRESH = CYSETTHRESH;
+  unsigned IOCTL_CYSETTIMEOUT = CYSETTIMEOUT; */
+>>>>>>> 407d2531f2052e281c3a6b3114f0b1f13296bc2a
   unsigned IOCTL_EQL_EMANCIPATE = EQL_EMANCIPATE;
   unsigned IOCTL_EQL_ENSLAVE = EQL_ENSLAVE;
   unsigned IOCTL_EQL_GETMASTRCFG = EQL_GETMASTRCFG;
