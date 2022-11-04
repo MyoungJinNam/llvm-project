@@ -177,7 +177,6 @@ void initializeGlobalMergePass(PassRegistry&);
 void initializeGlobalOptLegacyPassPass(PassRegistry&);
 void initializeGlobalSplitPass(PassRegistry&);
 //void initializeMiuPass(PassRegistry&);
-void initializeSPPLTOPass(PassRegistry&);
 void initializeGlobalsAAWrapperPassPass(PassRegistry&);
 void initializeGuardWideningLegacyPassPass(PassRegistry&);
 void initializeHardwareLoopsPass(PassRegistry&);

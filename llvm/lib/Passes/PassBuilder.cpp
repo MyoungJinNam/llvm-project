@@ -102,7 +102,6 @@
 #include "llvm/Transforms/IPO/GlobalDCE.h"
 #include "llvm/Transforms/IPO/GlobalOpt.h"
 #include "llvm/Transforms/IPO/GlobalSplit.h"
-#include "llvm/Transforms/IPO/SPPLTO.h"
 #include "llvm/Transforms/IPO/HotColdSplitting.h"
 #include "llvm/Transforms/IPO/IROutliner.h"
 #include "llvm/Transforms/IPO/InferFunctionAttrs.h"
@@ -1158,9 +1157,6 @@ PassBuilder::buildModuleOptimizationPipeline(OptimizationLevel Level,
                                              bool LTOPreLink) {
   ModulePassManager MPM(DebugLogging);
   
-  // SPP, SPPLTO
-  MPM.addPass(SPPLTOPass());
-
   // Optimize globals now that the module is fully simplified.
   MPM.addPass(GlobalOptPass());
   MPM.addPass(GlobalDCEPass());
@@ -1413,9 +1409,6 @@ PassBuilder::buildPerModuleDefaultPipeline(OptimizationLevel Level,
   // Force any function attributes we want the rest of the pipeline to observe.
   MPM.addPass(ForceFunctionAttrsPass());
   
-  // SPP, SPPLTO
-  MPM.addPass(SPPLTOPass());
-
   // Apply module pipeline start EP callback.
   for (auto &C : PipelineStartEPCallbacks)
     C(MPM, Level);
@@ -1526,9 +1519,6 @@ ModulePassManager PassBuilder::buildThinLTODefaultPipeline(
     MPM.addPass(LowerTypeTestsPass(nullptr, ImportSummary));
   }
   
-  // SPP, SPPLTO
-  MPM.addPass(SPPLTOPass());
-  
   if (Level == OptimizationLevel::O0)
     return MPM;
 
@@ -1565,9 +1555,6 @@ PassBuilder::buildLTODefaultPipeline(OptimizationLevel Level,
   // Convert @llvm.global.annotations to !annotation metadata.
   MPM.addPass(Annotation2MetadataPass());
   
-  // SPP, SPPLTO
-  MPM.addPass(SPPLTOPass());
-
   if (Level == OptimizationLevel::O0) {
     // The WPD and LowerTypeTest passes need to run at -O0 to lower type
     // metadata and intrinsics.
@@ -1638,9 +1625,6 @@ PassBuilder::buildLTODefaultPipeline(OptimizationLevel Level,
   // Use in-range annotations on GEP indices to split globals where beneficial.
   MPM.addPass(GlobalSplitPass());
   
-  // SPP, SPPLTO
-  MPM.addPass(SPPLTOPass());
-
   // Run whole program optimization of virtual call when the list of callees
   // is fixed.
   MPM.addPass(WholeProgramDevirtPass(ExportSummary, nullptr));
@@ -1810,9 +1794,6 @@ PassBuilder::buildLTODefaultPipeline(OptimizationLevel Level,
 
   // Emit annotation remarks.
   addAnnotationRemarksPass(MPM);
-
-  /// SPP, SPPLTO
-  MPM.addPass(SPPLTOPass());
 
   return MPM;
 }

@@ -977,9 +977,6 @@ void PassManagerBuilder::addLTOOptimizationPasses(legacy::PassManagerBase &PM) {
   // control flow integrity are enabled.
   PM.add(createGlobalSplitPass());
  
-  /// SPP. SPPLTO.
-  // PM.add(createSPPLTOPass());
-
   // Apply whole-program devirtualization and virtual constant propagation.
   PM.add(createWholeProgramDevirtPass(ExportSummary, nullptr));
 
@@ -1179,9 +1176,6 @@ void PassManagerBuilder::populateLTOPassManager(legacy::PassManagerBase &PM) {
 
   addExtensionsToPM(EP_FullLinkTimeOptimizationEarly, PM);
   
-  /// SPP. SPPLTO.
-  PM.add(createSPPLTOPass());
-
   if (OptLevel != 0)
     addLTOOptimizationPasses(PM);
   else {

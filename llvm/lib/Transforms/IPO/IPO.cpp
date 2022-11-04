@@ -36,7 +36,6 @@ void llvm::initializeIPO(PassRegistry &Registry) {
   initializeGlobalOptLegacyPassPass(Registry);
   initializeGlobalSplitPass(Registry);
 //  initializeMiuPass(Registry);
-  initializeSPPLTOPass(Registry);
   initializeHotColdSplittingLegacyPassPass(Registry);
   initializeIROutlinerLegacyPassPass(Registry);
   initializeAlwaysInlinerLegacyPassPass(Registry);

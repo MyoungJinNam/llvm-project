@@ -1,2 +1,0 @@
-add_subdirectory(Instrumentation)
-add_subdirectory(CustomOptimisation)
